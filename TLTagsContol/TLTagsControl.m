@@ -324,6 +324,13 @@
     
     
     if (string.length == 1 && [string rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
+        if ([string isEqualToString:@" "] && range.location == text.length) {
+            if (text && ![text isEqualToString:@""]) {
+                textField.text = @"";
+                [self addTag:text];
+            }
+        }
+        
         return NO;
     } else {
         if (!text || [text isEqualToString:@""]) {
